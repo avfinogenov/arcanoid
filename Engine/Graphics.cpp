@@ -318,14 +318,19 @@ void Graphics::PutPixel( int x,int y,Color c )
 
 void Graphics::DrawRect(int left, int top, int right, int bottom, Color c)
 {
-	for (int i=0;i<)
-	PutPixel(x, y)
+	for (int dx = 0; dx < (right-left); dx++)
+	{
+		for (int dy = 0; dy < (bottom-top);dy++)
+		{
+			PutPixel(left + dx, top + dy, c);
+		}
+	}
 }
 
 void Graphics::DrawRect(RectF & rect, Color c)
 {
 
-
+	DrawRect(rect.left, rect.top, rect.right, rect.bottom, c);
 }
 
 
