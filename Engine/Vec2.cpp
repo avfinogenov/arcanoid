@@ -31,6 +31,12 @@ Vec2 & Vec2::operator*=(float rhs)
 	return *this = *this * rhs;
 }
 
+Vec2& Vec2::operator=(Vec2 rhs)
+{
+	Vec2(rhs.x, rhs.y);
+	return *this;
+}
+
 float Vec2::GetLength()
 {
 	return std::sqrt(GetLengthSqrt());
