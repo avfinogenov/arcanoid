@@ -2,9 +2,7 @@
 
 
 
-RectF::RectF()
-{
-}
+
 
 
 RectF::RectF(float x_in, float y_in, float width_in, float hight_in)

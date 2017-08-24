@@ -2,9 +2,6 @@
 #include <cmath>
 
 
-Vec2::Vec2()
-{
-}
 
 
 Vec2::Vec2(float x_in, float y_in)

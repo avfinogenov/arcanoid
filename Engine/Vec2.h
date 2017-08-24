@@ -1,4 +1,4 @@
-
+#pragma once
 class Vec2
 {
 	float x;

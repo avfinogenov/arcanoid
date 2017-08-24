@@ -11,7 +11,7 @@ public:
 	float hight;
 	Vec2 vel;
 	Vec2 pos;
-	RectF rect(pos, width, hight);
+	//RectF rect(pos, width, hight);
 	
 };
 
