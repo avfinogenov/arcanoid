@@ -6,10 +6,11 @@ class Ball
 {
 public:
 	Ball() = default;
-	Ball(Vec2 pos_in, Vec2 vel_in, Graphics& gfx);
+	Ball(Vec2 pos_in, Vec2 vel_in);
+
 	void Draw(Graphics& gfx);
 	~Ball();
-	Graphics & gfx;
+	
 	Color color=Colors::Yellow;
 	RectF rect;
 	float width=16.0f;

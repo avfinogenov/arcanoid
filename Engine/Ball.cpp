@@ -4,10 +4,9 @@
 
 
 
-Ball::Ball(Vec2 pos_in, Vec2 vel_in, Graphics & gfx)
+Ball::Ball(Vec2 pos_in, Vec2 vel_in)
 	:pos(pos_in),
-	vel(vel_in),
-	gfx(gfx)
+	vel(vel_in)
 {
 	RectF rect(pos_in, width, hight);
 }
