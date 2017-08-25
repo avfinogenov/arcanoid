@@ -12,7 +12,7 @@ public:
 	~Ball();
 	void Update(float dt);
 	Color color=Colors::Yellow;
-	RectF rect;
+//	RectF rect;
 	float width=16.0f;
 	float hight=16.0f;
 	Vec2 vel;

@@ -14,8 +14,9 @@ RectF::RectF(float x_in, float y_in, float width_in, float hight_in)
 }
 
 RectF::RectF(Vec2 & v_in, float width_in, float hight_in)
+	:RectF(v_in.x, v_in.y, v_in.x+width_in, v_in.y+hight_in)
 {
-	RectF(v_in.x, v_in.y, width_in, hight_in);
+	
 }
 
 RectF::RectF(Vec2 & pos_in, Vec2 & dim_in)

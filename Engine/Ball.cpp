@@ -6,8 +6,8 @@
 
 Ball::Ball(Vec2& pos_in, Vec2& vel_in)
 	:pos(pos_in),
-	vel(vel_in),
-	rect(pos_in.x, pos_in.y,( pos_in.x+16.0f),(pos_in.y+ 16.0f))
+	vel(vel_in)
+	
 {
 	
 
@@ -15,6 +15,7 @@ Ball::Ball(Vec2& pos_in, Vec2& vel_in)
 
 void Ball::Draw(Graphics & gfx)
 {
+	RectF rect(pos, 16.0f, 16.0f);
 	gfx.DrawRect(rect, color);
 }
 
@@ -24,5 +25,5 @@ Ball::~Ball()
 
 void Ball::Update(float dt)
 {
-	pos = vel*dt;
+	pos += vel*dt;
 }
