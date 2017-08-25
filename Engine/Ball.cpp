@@ -19,3 +19,8 @@ void Ball::Draw(Graphics & gfx)
 Ball::~Ball()
 {
 }
+
+void Ball::Update(float dt)
+{
+	pos = vel*dt;
+}

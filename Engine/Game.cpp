@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	ball(Vec2(400.0f, 300.0f), Vec2(100.0f, 100.0f))
 {
 }
 
