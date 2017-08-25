@@ -22,7 +22,3 @@ RectF::RectF(Vec2 & pos_in, Vec2 & dim_in)
 {
 	RectF(pos_in.x, pos_in.y, dim_in.x, dim_in.y);
 }
-
-RectF::~RectF()
-{
-}

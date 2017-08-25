@@ -39,10 +39,13 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	float dt = ft.Mark();
+	ball.Update(dt);
 }
 
 void Game::ComposeFrame()
 {
+	ball.Draw(gfx);
 	// some things are just too perfect and pure for
 	// this cruel world...
 }

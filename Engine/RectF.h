@@ -9,8 +9,7 @@ public:
 	RectF(Vec2& topLeft, float right_in, float bottom_in);
 	RectF(Vec2& topLeft, Vec2& topRight);
 
-	~RectF();
-
+	
 	
 
 	float left;
