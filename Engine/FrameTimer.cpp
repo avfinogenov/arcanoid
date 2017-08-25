@@ -8,7 +8,7 @@ FrameTimer::FrameTimer()
 
 }
 
-double FrameTimer::Mark()
+float FrameTimer::Mark()
 {
 	auto old = last;
 	last = steady_clock::now();

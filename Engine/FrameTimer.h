@@ -7,7 +7,7 @@ class FrameTimer
 
 public:
 	FrameTimer();
-	double Mark();
+	float Mark();
 
 
 
