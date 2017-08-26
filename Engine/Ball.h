@@ -7,6 +7,9 @@ class Ball
 public:
 	Ball() = default;
 	Ball(Vec2& pos_in, Vec2& vel_in);
+	void DoWallCollison(RectF& walls);
+	void ReboundX();
+	void ReboundY();
 //	Ball(float posX_in, float posY_in, float velX_in, float velY_in);
 	void Draw(Graphics& gfx);
 	~Ball();

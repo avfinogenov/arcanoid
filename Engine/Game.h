@@ -44,6 +44,7 @@ private:
 	Graphics gfx;
 	Ball ball;
 	FrameTimer ft;
+	RectF walls;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

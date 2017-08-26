@@ -23,3 +23,14 @@ RectF::RectF(Vec2 & pos_in, Vec2 & dim_in)
 {
 	RectF(pos_in.x, pos_in.y, dim_in.x, dim_in.y);
 }
+
+RectF RectF::GetRect(Vec2 & center, float halfWidth, float halfHight)
+{
+	return RectF(center.x-halfWidth, center.y-halfHight, center.x + halfWidth, center.y + halfHight);
+}
+
+bool RectF::IsOverlappinWith(RectF & other)
+{
+	return right > other.left && left<other.right && bottom>other.top && top < other.bottom;
+
+}
