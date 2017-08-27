@@ -47,8 +47,8 @@ void Ball::ReboundY()
 
 void Ball::Draw(Graphics & gfx)
 {
-	RectF rect(pos, 16.0f, 16.0f);
-	gfx.DrawRect(rect, color);
+	RectF rectOfBall(pos, 16.0f, 16.0f);
+	gfx.DrawRect(rectOfBall, color);
 }
 
 Ball::~Ball()

@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Ball.h"
 #include "FrameTimer.h"
+#include "Brick.h"
 
 class Game
 {
@@ -33,18 +34,27 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
+
+	void InitBriks();
 private:
 	void ComposeFrame();
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void DrawBriks(Graphics& gfx);
 	/********************************/
 private:
+	static constexpr int numberOfBricks = 10 ;
 	MainWindow& wnd;
 	Graphics gfx;
 	Ball ball;
 	FrameTimer ft;
 	RectF walls;
+	Brick brick[numberOfBricks];
+	Vec2 sizeOfBrik=Vec2(40.0f, 10.0f);
+	Vec2 posOfBrik = Vec2(20.0f, 20.0f);
+	Vec2 posOfBriks[4 * numberOfBricks];
+//	RectF briks[4*numberOfBricks];
 	/********************************/
 	/*  User Variables              */
 	/********************************/

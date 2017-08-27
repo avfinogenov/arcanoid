@@ -21,13 +21,15 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
+	wnd(wnd),
+	gfx(wnd),
 	ball(Vec2(400.0f, 300.0f), Vec2(500.0f, 500.0f)),
-	walls(0.0f, 0.0f,(float) gfx.ScreenWidth, (float)gfx.ScreenHeight)
+	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight)
+	//briks[]()
 {
+	//InitBriks();
 }
 
 void Game::Go()
@@ -38,16 +40,39 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
+void Game::InitBriks()
+{
+	for (int i = 0;i < numberOfBricks;i++)
+
+	{
+		float tmp = float(i);
+		posOfBriks[i] =sizeOfBrik*tmp;
+		brick[i].rect = RectF(posOfBriks[i], sizeOfBrik);
+	}
+}
+
 void Game::UpdateModel()
 {
 	float dt = ft.Mark();
 	ball.Update(dt);
 	ball.DoWallCollison(walls);
+	InitBriks();
+}
+
+void Game::DrawBriks(Graphics & gfx)
+{
+	for (int i = 0; i < numberOfBricks;i++) {
+		gfx.DrawRect(brick[i].rect, Colors::White);
+	}
 }
 
 void Game::ComposeFrame()
 {
 	ball.Draw(gfx);
+	RectF r=RectF(posOfBrik, sizeOfBrik);
+	Brick b=Brick(r);
+	b.Draw(gfx);
+	//DrawBriks(gfx);
 	// some things are just too perfect and pure for
 	// this cruel world...
 }
