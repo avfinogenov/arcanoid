@@ -43,13 +43,16 @@ void Game::Go()
 void Game::InitBriks()
 {
 	for (int i = 0;i < numberOfBricks;i++)
+		for (int j = 0;j < numberOfLayers;j++)
+		{
 
-	{
-		float tmp = float(i);
-		posOfBriks[i].x =(sizeOfBrik.x*tmp)+offset.x;
-		posOfBriks[i].y = offset.y;
-		brick[i].rect = RectF(posOfBriks[i], sizeOfBrik);
-	}
+			{
+				float tmp = float(i);
+				posOfBriks[i][j].x = (sizeOfBrik.x*tmp) + offset.x;
+				posOfBriks[i][j].y = offset.y+(sizeOfBrik.y*(float)j);
+				brick[i][j].rect = RectF(posOfBriks[i][j], sizeOfBrik);
+			}
+		}
 }
 
 void Game::UpdateModel()
@@ -62,9 +65,13 @@ void Game::UpdateModel()
 
 void Game::DrawBriks(Graphics & gfx)
 {
-	for (int i = 0; i < numberOfBricks;i++) {
-		gfx.DrawBrick(brick[i].rect, Colors::White);
-	}
+	for (int i = 0; i < numberOfBricks;i++)
+		for (int j = 0; j < numberOfLayers;j++)
+		{
+			{
+				gfx.DrawBrick(brick[i][j].rect, Colors::White);
+			}
+		}
 }
 
 void Game::ComposeFrame()
