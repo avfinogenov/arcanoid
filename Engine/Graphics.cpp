@@ -333,6 +333,11 @@ void Graphics::DrawRect(RectF & rect, Color c)
 	DrawRect(rect.left, rect.top, rect.right, rect.bottom, c);
 }
 
+void Graphics::DrawBrick(RectF & rect, Color c)
+{
+	DrawRect(rect.left, rect.top, rect.right-2.0f, rect.bottom-2.0f, c);
+}
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception

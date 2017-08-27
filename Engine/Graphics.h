@@ -59,6 +59,7 @@ public:
 	void PutPixel( int x,int y,Color c );
 	void DrawRect(int left, int top, int right, int bottom, Color c);
 	void DrawRect(RectF& rect, Color c);
+	void DrawBrick(RectF& rect, Color c);
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

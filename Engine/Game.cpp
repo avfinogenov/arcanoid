@@ -46,7 +46,8 @@ void Game::InitBriks()
 
 	{
 		float tmp = float(i);
-		posOfBriks[i] =sizeOfBrik*tmp;
+		posOfBriks[i].x =(sizeOfBrik.x*tmp)+offset.x;
+		posOfBriks[i].y = offset.y;
 		brick[i].rect = RectF(posOfBriks[i], sizeOfBrik);
 	}
 }
@@ -62,17 +63,14 @@ void Game::UpdateModel()
 void Game::DrawBriks(Graphics & gfx)
 {
 	for (int i = 0; i < numberOfBricks;i++) {
-		gfx.DrawRect(brick[i].rect, Colors::White);
+		gfx.DrawBrick(brick[i].rect, Colors::White);
 	}
 }
 
 void Game::ComposeFrame()
 {
 	ball.Draw(gfx);
-	RectF r=RectF(posOfBrik, sizeOfBrik);
-	Brick b=Brick(r);
-	b.Draw(gfx);
-	//DrawBriks(gfx);
+	DrawBriks(gfx);
 	// some things are just too perfect and pure for
 	// this cruel world...
 }

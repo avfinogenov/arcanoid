@@ -44,13 +44,14 @@ private:
 	void DrawBriks(Graphics& gfx);
 	/********************************/
 private:
-	static constexpr int numberOfBricks = 10 ;
+	static constexpr int numberOfBricks = 19 ;
 	MainWindow& wnd;
 	Graphics gfx;
 	Ball ball;
 	FrameTimer ft;
 	RectF walls;
 	Brick brick[numberOfBricks];
+	Vec2 offset = Vec2(20.0f, 20.0f);
 	Vec2 sizeOfBrik=Vec2(40.0f, 10.0f);
 	Vec2 posOfBrik = Vec2(20.0f, 20.0f);
 	Vec2 posOfBriks[4 * numberOfBricks];
