@@ -26,6 +26,7 @@
 #include "Ball.h"
 #include "FrameTimer.h"
 #include "Brick.h"
+#include "Pad.h"
 
 class Game
 {
@@ -51,6 +52,7 @@ private:
 	Ball ball;
 	FrameTimer ft;
 	RectF walls;
+	Pad pad;
 	Brick brick[numberOfBricks][numberOfLayers];
 	Vec2 offset = Vec2(20.0f, 20.0f);
 	Vec2 sizeOfBrik=Vec2(40.0f, 16.0f);

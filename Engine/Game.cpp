@@ -26,7 +26,8 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	ball(Vec2(400.0f, 300.0f), Vec2(500.0f, 500.0f)),
-	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight)
+	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
+	pad(Vec2(400,500), 50, 30)
 	//briks[]()
 {
 	InitBriks();
@@ -61,7 +62,9 @@ void Game::UpdateModel()
 	float dt = ft.Mark();
 	ball.Update(dt);
 	ball.DoWallCollison(walls);
-	
+	pad.Update(wnd.kbd, dt);
+	pad.DoWallCollision(walls);
+	pad.DoBallCollision(ball);
 	for (int i = 0; i < (numberOfBricks); i++)
 	{
 		bool exitflag = false;
@@ -99,6 +102,7 @@ void Game::DrawBriks(Graphics & gfx)
 
 void Game::ComposeFrame()
 {
+	pad.Draw(gfx);
 	ball.Draw(gfx);
 	DrawBriks(gfx);
 	// some things are just too perfect and pure for
