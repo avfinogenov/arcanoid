@@ -29,7 +29,7 @@ Game::Game(MainWindow& wnd)
 	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight)
 	//briks[]()
 {
-	//InitBriks();
+	InitBriks();
 }
 
 void Game::Go()
@@ -38,6 +38,7 @@ void Game::Go()
 	UpdateModel();
 	ComposeFrame();
 	gfx.EndFrame();
+	//InitBriks();
 }
 
 void Game::InitBriks()
@@ -60,7 +61,26 @@ void Game::UpdateModel()
 	float dt = ft.Mark();
 	ball.Update(dt);
 	ball.DoWallCollison(walls);
-	InitBriks();
+	
+	for (int i = 0; i < (numberOfBricks); i++)
+	{
+		bool exitflag = false;
+		for (int j = 0; j < numberOfLayers; j++)
+		{
+			if (brick[i][j].DoBallCollision(ball))
+			{
+				exitflag = true;
+				break;
+			}
+		}
+		if (exitflag)
+		{
+			break;
+		}
+	}
+	//if (brick[1][1].DoBallCollision(ball))
+	
+
 }
 
 void Game::DrawBriks(Graphics & gfx)
@@ -69,7 +89,10 @@ void Game::DrawBriks(Graphics & gfx)
 		for (int j = 0; j < numberOfLayers;j++)
 		{
 			{
-				gfx.DrawBrick(brick[i][j].rect, Colors::White);
+				if (!brick[i][j].isDestroed)
+				{
+					gfx.DrawBrick(brick[i][j].rect, Colors::White);
+				}
 			}
 		}
 }

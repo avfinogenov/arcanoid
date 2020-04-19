@@ -15,8 +15,24 @@ Brick::Brick(RectF & rect_in)
 
 void Brick::Draw(Graphics & gfx)
 {
-	gfx.DrawRect(rect, c);
+	if (!isDestroed)
+	{
+		gfx.DrawRect(rect, c);
+	}
 }
+
+bool Brick::DoBallCollision(Ball & ball)
+{
+	if (!isDestroed && rect.IsOverlappinWith(ball.GetRect()))
+	{
+		ball.ReboundY();
+		isDestroed = true;
+		return true;
+	}
+
+	return false;
+}
+
 
 Brick::~Brick()
 {
