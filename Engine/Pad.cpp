@@ -41,8 +41,18 @@ bool Pad::DoBallCollision(Ball & ball)
 	RectF rect = GetRect();
 	if (rect.IsOverlappinWith(ball.GetRect()))
 	{
-
-		ball.ReboundY();
+		if (std::signbit(ball.vel.x) == (std::signbit(ball.pos.x - rect.GetCenter().x)))
+		{
+			ball.ReboundY();
+		}
+		else
+			if (ball.pos.x >= rect.left && ball.pos.x <= rect.right)
+			{
+				ball.ReboundY();
+			}
+			else {
+				ball.ReboundX();
+			}
 		return true;
 	}
 	return false;
