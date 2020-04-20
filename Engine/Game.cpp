@@ -81,21 +81,47 @@ void Game::UpdateModel()
 	pad.Update(wnd.kbd, dt);
 	pad.DoWallCollision(walls);
 	pad.DoBallCollision(ball);
+	bool isCol = false;
+	float curColDistSq;
+	int curColI, curColj;
+	float newColDistSq;
 	for (int i = 0; i < (numberOfBricks); i++)
 	{
-		bool exitflag = false;
+		
 		for (int j = 0; j < numberOfLayers; j++)
 		{
-			if (brick[i][j].DoBallCollision(ball))
+			if (brick[i][j].CheckBallCollision(ball))
 			{
-				exitflag = true;
-				break;
+				newColDistSq = (ball.GetPos() - brick[i][j].rect.GetCenter()).GetLengthSqrt();
+				if (isCol)
+				{
+					if (newColDistSq < curColDistSq)
+					{
+						curColDistSq = newColDistSq;
+						curColI = i;
+						curColj = j;
+					}
+				}
+				else
+				{
+					isCol = true;
+					curColDistSq = newColDistSq;
+					curColI = i;
+					curColj = j;
+				}
 			}
+			if (isCol)
+			{
+				brick[curColI][curColj].ExecuteBallCollision(ball);
+			}
+		
+		
+		
+		
+		
+		
 		}
-		if (exitflag)
-		{
-			break;
-		}
+		
 	}
 	//if (brick[1][1].DoBallCollision(ball))
 	

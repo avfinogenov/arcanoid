@@ -9,7 +9,8 @@ public:
 	Brick()=default;
 	Brick(RectF& rect);
 	void Draw(Graphics & gfx);
-	bool DoBallCollision(Ball& ball);
+	bool CheckBallCollision(Ball& ball);
+	void ExecuteBallCollision(Ball& ball);
 	RectF rect;
 	Color c = Colors::White;
 	bool isDestroed = false;

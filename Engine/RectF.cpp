@@ -30,6 +30,11 @@ RectF RectF::FromCenter(Vec2 & center, float halfWidth, float halfHight)
 	return RectF(center.x - halfWidth, center.y - halfHight, center.x + halfWidth, center.y + halfHight);
 }
 
+Vec2 RectF::GetCenter()
+{
+	return Vec2((left + right)/2, (top+bottom)/2);
+}
+
 //RectF RectF::GetRect(Vec2 & center, float halfWidth, float halfHight)
 //{
 //	return RectF(center.x-halfWidth, center.y-halfHight, center.x + halfWidth, center.y + halfHight);
@@ -37,6 +42,6 @@ RectF RectF::FromCenter(Vec2 & center, float halfWidth, float halfHight)
 
 bool RectF::IsOverlappinWith(RectF & other)
 {
-	return right > other.left && left<other.right && bottom>other.top && top < other.bottom;
+	return right > other.left && left < other.right && bottom > other.top && top < other.bottom;
 
 }

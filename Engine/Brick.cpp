@@ -21,10 +21,14 @@ void Brick::Draw(Graphics & gfx)
 	}
 }
 
-bool Brick::DoBallCollision(Ball & ball)
+bool Brick::CheckBallCollision(Ball & ball)
 {
-	if (!isDestroed && rect.IsOverlappinWith(ball.GetRect()))
-	{
+	return !isDestroed && rect.IsOverlappinWith(ball.GetRect());
+}
+
+void Brick::ExecuteBallCollision(Ball & ball)
+{
+	
 		if (ball.pos.x >= rect.left && ball.pos.x <= rect.right)
 		{
 			ball.ReboundY();
@@ -33,10 +37,8 @@ bool Brick::DoBallCollision(Ball & ball)
 			ball.ReboundX();
 		}
 		isDestroed = true;
-		return true;
-	}
+	
 
-	return false;
 }
 
 
