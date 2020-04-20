@@ -25,9 +25,9 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	ball(Vec2(400.0f, 300.0f), Vec2(500.0f, 500.0f)),
+	ball(Vec2(440.0f, 300.0f), Vec2(300.0f, 300.0f)),
 	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
-	pad(Vec2(400,500), 50, 30)
+	pad(Vec2(400,500), 50, 15)
 	//briks[]()
 {
 	InitBriks();
@@ -57,10 +57,26 @@ void Game::InitBriks()
 		}
 }
 
+void Game::ChangeVelocityBall()
+{
+	
+	if (wnd.kbd.KeyIsPressed(VK_SHIFT))
+	{
+		ball.vel.x = ball.vel.x * 1.1;
+		ball.vel.y = ball.vel.y * 1.1;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_CONTROL))
+	{
+		ball.vel.x = ball.vel.x / 1.1;
+		ball.vel.y = ball.vel.y / 1.1;
+	}
+}
+
 void Game::UpdateModel()
 {
 	float dt = ft.Mark();
 	ball.Update(dt);
+	ChangeVelocityBall();
 	ball.DoWallCollison(walls);
 	pad.Update(wnd.kbd, dt);
 	pad.DoWallCollision(walls);

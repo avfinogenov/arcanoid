@@ -38,6 +38,11 @@ void Ball::Update(float dt)
 	pos += vel*dt;
 }
 
+Vec2 Ball::GetPos()
+{
+	return pos;
+}
+
 RectF Ball::GetRect()
 {
 	return RectF::FromCenter(pos,width,width);

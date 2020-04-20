@@ -34,6 +34,7 @@ public:
 	void Draw(Graphics& gfx);
 	~Ball();
 	void Update(float dt);
+	Vec2 GetPos();
 	Color color=Colors::Yellow;
 	RectF rect;
 	static constexpr float width=16.0f;

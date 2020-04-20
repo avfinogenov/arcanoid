@@ -53,6 +53,7 @@ private:
 	FrameTimer ft;
 	RectF walls;
 	Pad pad;
+	void ChangeVelocityBall();
 	Brick brick[numberOfBricks][numberOfLayers];
 	Vec2 offset = Vec2(20.0f, 20.0f);
 	Vec2 sizeOfBrik=Vec2(40.0f, 16.0f);
