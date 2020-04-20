@@ -25,7 +25,7 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	ball(Vec2(440.0f, 300.0f), Vec2(300.0f, 300.0f)),
+	ball(Vec2(440.0f, 300.0f), Vec2(-300.0f, -300.0f)),
 	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
 	pad(Vec2(400,500), 50, 15)
 	//briks[]()
@@ -49,8 +49,8 @@ void Game::InitBriks()
 		{
 
 			{
-				float tmp = float(i);
-				posOfBriks[i][j].x = (sizeOfBrik.x*tmp) + offset.x;
+				
+				posOfBriks[i][j].x = (sizeOfBrik.x*float(i)) + offset.x;
 				posOfBriks[i][j].y = offset.y+(sizeOfBrik.y*(float)j);
 				brick[i][j].rect = RectF(posOfBriks[i][j], sizeOfBrik);
 			}

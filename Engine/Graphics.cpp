@@ -335,7 +335,7 @@ void Graphics::DrawRect(RectF & rect, Color c)
 
 void Graphics::DrawBrick(RectF & rect, Color c)
 {
-	DrawRect(rect.left, rect.top, rect.right-2.0f, rect.bottom-2.0f, c);
+	DrawRect(rect.left, rect.top, rect.right-2, rect.bottom-2, c);
 }
 
 

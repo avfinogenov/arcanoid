@@ -25,7 +25,7 @@ void Ball::ReboundY()
 
 void Ball::Draw(Graphics & gfx)
 {
-	RectF rectOfBall(pos, 16.0f, 16.0f);
+	RectF rectOfBall=RectF::FromCenter(pos, 8.0f, 8.0f);
 	gfx.DrawRect(rectOfBall, color);
 }
 
@@ -45,5 +45,7 @@ Vec2 Ball::GetPos()
 
 RectF Ball::GetRect()
 {
-	return RectF::FromCenter(pos,width,width);
+	
+	return RectF::FromCenter(pos, 8.0f, 8.0f);
+
 }

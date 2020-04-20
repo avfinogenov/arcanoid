@@ -9,7 +9,7 @@ public:
 	Ball(Vec2& pos_in, Vec2& vel_in);
 	void DoWallCollison(RectF& walls)
 	{
-		RectF rect(pos, 16.0f, 16.0f);
+		RectF rect=RectF::FromCenter(pos, 8.0f, 8.0f);
 		if (rect.left<walls.left) {
 			pos.x += walls.left - rect.left;
 			ReboundX();
@@ -36,7 +36,7 @@ public:
 	void Update(float dt);
 	Vec2 GetPos();
 	Color color=Colors::Yellow;
-	RectF rect;
+	//RectF rect;
 	static constexpr float width=16.0f;
 	float hight=16.0f;
 	Vec2 vel;
