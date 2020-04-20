@@ -38,8 +38,10 @@ void Pad::DoWallCollision(RectF & walls)
 
 bool Pad::DoBallCollision(Ball & ball)
 {
-	if (GetRect().IsOverlappinWith(ball.GetRect()))
+	RectF rect = GetRect();
+	if (rect.IsOverlappinWith(ball.GetRect()))
 	{
+
 		ball.ReboundY();
 		return true;
 	}

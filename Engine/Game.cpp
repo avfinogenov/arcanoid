@@ -25,7 +25,7 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	ball(Vec2(440.0f, 300.0f), Vec2(-300.0f, -300.0f)),
+	ball(Vec2(440.0f, 300.0f), Vec2(-50.0f, -50.0f)),
 	walls(0.0f, 0.0f, (float)gfx.ScreenWidth, (float)gfx.ScreenHeight),
 	pad(Vec2(400,500), 50, 15)
 	//briks[]()
@@ -110,10 +110,7 @@ void Game::UpdateModel()
 					curColj = j;
 				}
 			}
-			if (isCol)
-			{
-				brick[curColI][curColj].ExecuteBallCollision(ball);
-			}
+			
 		
 		
 		
@@ -122,6 +119,10 @@ void Game::UpdateModel()
 		
 		}
 		
+	}
+	if (isCol)
+	{
+		brick[curColI][curColj].ExecuteBallCollision(ball);
 	}
 	//if (brick[1][1].DoBallCollision(ball))
 	
