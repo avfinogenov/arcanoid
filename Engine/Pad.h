@@ -13,7 +13,7 @@ public:
 	bool DoBallCollision(Ball& ball);
 	void Update(Keyboard& kbd, float dt);
 	RectF GetRect();
-
+	void ResetColdown();
 
 	
 
@@ -26,5 +26,6 @@ private:
 	float half_width;
 	float speed = 300.0f;
 	Color color = Colors::Red;
+	bool isCooldown = false;
 };
 

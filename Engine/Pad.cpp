@@ -38,22 +38,26 @@ void Pad::DoWallCollision(RectF & walls)
 
 bool Pad::DoBallCollision(Ball & ball)
 {
-	RectF rect = GetRect();
-	if (rect.IsOverlappinWith(ball.GetRect()))
+	if (!isCooldown)
 	{
-		if (std::signbit(ball.vel.x) == (std::signbit(ball.pos.x - rect.GetCenter().x)))
+		RectF rect = GetRect();
+		if (rect.IsOverlappinWith(ball.GetRect()))
 		{
-			ball.ReboundY();
-		}
-		else
-			if (ball.pos.x >= rect.left && ball.pos.x <= rect.right)
+			if (std::signbit(ball.vel.x) == (std::signbit(ball.pos.x - rect.GetCenter().x)))
 			{
 				ball.ReboundY();
 			}
-			else {
-				ball.ReboundX();
-			}
-		return true;
+			else
+				if (ball.pos.x >= rect.left && ball.pos.x <= rect.right)
+				{
+					ball.ReboundY();
+				}
+				else {
+					ball.ReboundX();
+				}
+				isCooldown = true;
+				return true;
+		}
 	}
 	return false;
 }
@@ -74,6 +78,11 @@ void Pad::Update(Keyboard& kbd, float dt)
 RectF Pad::GetRect()
 {
 	return RectF::FromCenter(pos, half_hight, half_width);
+}
+
+void Pad::ResetColdown()
+{
+	isCooldown = false;
 }
 
 Pad::~Pad()

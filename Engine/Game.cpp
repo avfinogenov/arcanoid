@@ -35,8 +35,16 @@ Game::Game(MainWindow& wnd)
 
 void Game::Go()
 {
+	
 	gfx.BeginFrame();	
-	UpdateModel();
+	float elapsedTime = ft.Mark();
+	while (elapsedTime > 0.0f)
+	{
+		const float dt = std::min(0.0025f, elapsedTime);
+		UpdateModel(dt);
+		elapsedTime -= dt;
+	}
+
 	ComposeFrame();
 	gfx.EndFrame();
 	//InitBriks();
@@ -72,15 +80,19 @@ void Game::ChangeVelocityBall()
 	}
 }
 
-void Game::UpdateModel()
+void Game::UpdateModel(float dt)
 {
-	float dt = ft.Mark();
+	//float dt = ft.Mark();
 	ball.Update(dt);
 	ChangeVelocityBall();
-	ball.DoWallCollison(walls);
+	if (ball.DoWallCollison(walls))
+	{
+		pad.ResetColdown();
+	}
 	pad.Update(wnd.kbd, dt);
 	pad.DoWallCollision(walls);
 	pad.DoBallCollision(ball);
+	
 	bool isCol = false;
 	float curColDistSq;
 	int curColI, curColj;
@@ -122,6 +134,7 @@ void Game::UpdateModel()
 	}
 	if (isCol)
 	{
+		pad.ResetColdown();
 		brick[curColI][curColj].ExecuteBallCollision(ball);
 	}
 	//if (brick[1][1].DoBallCollision(ball))

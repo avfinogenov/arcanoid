@@ -39,7 +39,7 @@ public:
 	void InitBriks();
 private:
 	void ComposeFrame();
-	void UpdateModel();
+	void UpdateModel(float dt);
 	/********************************/
 	/*  User Functions              */
 	void DrawBriks(Graphics& gfx);
