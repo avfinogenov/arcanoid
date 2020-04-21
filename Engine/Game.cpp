@@ -26,7 +26,25 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd )
-{
+	
+	
+{/*
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < nRow; j++)
+		{
+			int x1tmp, x2tmp, y1tmp, y2tmp;
+			x1tmp = i*xbrickSize;
+			x2tmp = (i + 1)*xbrickSize;
+			y1tmp = j*ybrickSize;
+			y2tmp = (j + 1)*ybrickSize;
+			RectF rect = RectF(x1tmp, x2tmp, y1tmp, y2tmp);
+			bricks[i][j](rect);
+		}
+	}
+*/
+	
+	
 }
 
 void Game::Go()
@@ -34,18 +52,21 @@ void Game::Go()
 	gfx.BeginFrame();	
 	UpdateModel();
 	ComposeFrame();
+	
 	gfx.EndFrame();
 }
 
 void Game::UpdateModel()
 {
+	
 }
 
 void Game::ComposeFrame()
 {
 	
-	
-	
+	 //Brick b = Brick(RectF(0, 10, 0, 10));
+//	b1.DrawBrick(gfx);
+	//b.DrawBrick(gfx);
 
 
 

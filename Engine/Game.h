@@ -23,6 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Brick.h"
 
 class Game
 {
@@ -37,10 +38,16 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	const static int row = 19;
+	const static int nRow = 5;
+//	Brick bricks[row][nRow];
+	
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	int xbrickSize = 40;
+	int ybrickSize = 20;
 };
