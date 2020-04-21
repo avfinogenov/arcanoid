@@ -43,7 +43,7 @@ Game::Game( MainWindow& wnd )
 		}
 	}
 */
-	
+	InitBriks();
 	
 }
 
@@ -56,6 +56,21 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
+void Game::InitBriks()
+{
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < nRow; j++)
+		{
+
+			Vec2 posOfBriks[row][nRow];
+
+			posOfBriks[i][j].x = (sizeOfBrik.x*float(i)) + offset.x;
+			posOfBriks[i][j].y = offset.y + (sizeOfBrik.y*(float)j);
+			bricks[i][j].rect = RectF(posOfBriks[i][j], sizeOfBrik);
+			}
+		}
+}
 void Game::UpdateModel()
 {
 	
@@ -67,8 +82,13 @@ void Game::ComposeFrame()
 	 //Brick b = Brick(RectF(0, 10, 0, 10));
 //	b1.DrawBrick(gfx);
 	//b.DrawBrick(gfx);
-
-
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < nRow; j++)
+		{
+			bricks[i][j].DrawBrick(gfx);
+		}
+	}
 
 	// some things are just too perfect and pure for
 	// this cruel world...

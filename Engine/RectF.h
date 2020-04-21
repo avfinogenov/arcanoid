@@ -1,4 +1,5 @@
 #pragma once
+#include "Vec2.h"
 class RectF
 {
 public:
@@ -7,6 +8,7 @@ public:
 
 	RectF() = default;
 	RectF(float l, float r, float t, float b);
+	RectF(Vec2 top_left, Vec2 bot_right);
 
 
 

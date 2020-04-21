@@ -24,6 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Brick.h"
+#include "Vec2.h"
 
 class Game
 {
@@ -38,9 +39,8 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
-	const static int row = 19;
-	const static int nRow = 5;
-//	Brick bricks[row][nRow];
+
+	void InitBriks();
 	
 private:
 	MainWindow& wnd;
@@ -48,6 +48,9 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
-	int xbrickSize = 40;
-	int ybrickSize = 20;
+	const static int row = 19;
+	const static int nRow = 5;
+	Brick bricks[row][nRow];
+	Vec2 sizeOfBrik=Vec2(40, 20);
+	Vec2 offset = Vec2(20, 20);
 };
