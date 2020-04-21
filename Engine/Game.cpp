@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -42,6 +43,12 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	
+	
+	
+
+
+
 	// some things are just too perfect and pure for
 	// this cruel world...
 }
