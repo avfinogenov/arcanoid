@@ -30,7 +30,7 @@ Game::Game( MainWindow& wnd )
 	
 {
 	InitBriks();
-	
+	InitMap();
 }
 
 void Game::Go()
@@ -49,13 +49,27 @@ void Game::InitBriks()
 		for (int j = 0; j < nRow; j++)
 		{
 
-			Vec2 posOfBriks[row][nRow];
+			Vec2 posOfBriks;
 
-			posOfBriks[i][j].x = (sizeOfBrik.x*float(i)) + offset.x;
-			posOfBriks[i][j].y = offset.y + (sizeOfBrik.y*(float)j);
-			bricks[i][j].rect = RectF(posOfBriks[i][j], sizeOfBrik);
+			posOfBriks.x = (sizeOfBrik.x*float(i)) + offset.x;
+			posOfBriks.y = offset.y + (sizeOfBrik.y*(float)j);
+			bricks[i][j].rect = RectF(posOfBriks, sizeOfBrik);
 			}
 		}
+}
+void Game::InitMap()
+{
+	for (int i = 0; i < 40; i++)
+	{
+		for (int j = 0; j < 30; j++)
+		{
+			map[i][j].x = (i*offset.x + (i + 1)*offset.x) / 2;
+			map[i][j].y = (j*offset.y + (j + 1)*offset.y) / 2;
+			//map[i][j] = Vec2(x, y);
+		}
+	}
+	
+
 }
 void Game::UpdateModel()
 {
