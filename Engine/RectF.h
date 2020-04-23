@@ -9,7 +9,8 @@ public:
 	RectF() = default;
 	RectF(float l, float r, float t, float b);
 	RectF(Vec2 top_left, Vec2 bot_right);
-
+	bool IsCollided(RectF other);
+	static RectF:FromeCentre();
 
 
 

@@ -9,6 +9,7 @@ public:
 	void ChangeOtherBool(bool *ex);
 	void Update(float dt);
 	void Draw(Graphics& gfx);
+	bool CheckCollWalls(RectF walls_in);
 	RectF GetReckt();
 	Vec2 pos;
 	Vec2 vel;

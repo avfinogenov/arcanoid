@@ -34,6 +34,16 @@ void Ball::Draw(Graphics & gfx)
 	gfx.DrawRect(GetReckt(), c);
 }
 
+bool Ball::CheckCollWalls(RectF walls_in)
+{
+	RectF rect = GetReckt();
+	if (rect.IsCollided(walls_in))
+	{
+
+	}
+	return false;
+}
+
 RectF Ball::GetReckt()
 {
 

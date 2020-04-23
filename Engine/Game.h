@@ -61,4 +61,5 @@ private:
 	Vec2 map[40][30];
 	FrameTimer ft;
 	Ball ball;
+	RectF walls;
 };
