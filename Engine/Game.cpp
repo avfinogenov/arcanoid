@@ -65,14 +65,36 @@ void Game::InitMap()
 		{
 			map[i][j].x = (i*offset.x + (i + 1)*offset.x) / 2;
 			map[i][j].y = (j*offset.y + (j + 1)*offset.y) / 2;
-			//map[i][j] = Vec2(x, y);
+			
 		}
 	}
 	
 
 }
+//void Function()
+//{
+//	//setbricknumber;
+//	
+//}
+int Game::MapGetPosX(Vec2 pos)
+{
+	return (int)((pos.x - 10) / 20);
+}
+int Game::MapGetPosY(Vec2 pos)
+{
+	return (int)((pos.y - 10) / 20);
+}
 void Game::UpdateModel()
 {
+	bool *pBoll;
+	pBoll = &(bricks[0][0].isDestroyed);
+	ball.ChangeOtherBool(pBoll);
+	if (bricks[0][0].isDestroyed)
+	{
+		gfx.PutPixel(20, 400, 255, 255, 255);
+	}
+	
+	
 	
 }
 

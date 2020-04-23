@@ -10,7 +10,7 @@ public:
 	~Brick();
 	RectF rect;
 	Color c = Color(255, 255, 255);
-
+	bool isDestroyed = false;
 
 
 

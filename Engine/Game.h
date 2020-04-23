@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Brick.h"
 #include "Vec2.h"
+#include "Ball.h"
 
 class Game
 {
@@ -42,6 +43,8 @@ private:
 
 	void InitBriks();
 	void InitMap();
+	int MapGetPosX(Vec2 pos);
+	int Game::MapGetPosY(Vec2 pos);
 	
 private:
 	MainWindow& wnd;
@@ -55,4 +58,5 @@ private:
 	Vec2 sizeOfBrik=Vec2(40, 20);
 	Vec2 offset = Vec2(20, 20);
 	Vec2 map[40][30];
+	Ball ball;
 };
