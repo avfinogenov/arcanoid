@@ -37,15 +37,41 @@ void Ball::Draw(Graphics & gfx)
 bool Ball::CheckCollWalls(RectF walls_in)
 {
 	RectF rect = GetReckt();
-	if (rect.IsCollided(walls_in))
+	if (rect.left<=walls_in.left)
 	{
-
+		pos.x += walls_in.left - rect.left;
+		ReboundX();
+	}
+	if (rect.right >= walls_in.right)
+	{
+		pos.x += walls_in.right - rect.right;
+		ReboundX();
+	}
+	if (rect.top <= walls_in.top)
+	{
+		pos.y += walls_in.top - rect.top;
+		ReboundY();
+	}
+	if (rect.bottom >= walls_in.bottom)
+	{
+		pos.y += walls_in.bottom - rect.bottom;
+		ReboundY();
 	}
 	return false;
+}
+
+void Ball::ReboundX()
+{
+	vel.x = -vel.x;
+}
+
+void Ball::ReboundY()
+{
+	vel.y = -vel.y;
 }
 
 RectF Ball::GetReckt()
 {
 
-	return RectF(pos, size);
+	return RectF::FromCenter(pos, 8,8);
 }

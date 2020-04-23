@@ -10,6 +10,8 @@ public:
 	void Update(float dt);
 	void Draw(Graphics& gfx);
 	bool CheckCollWalls(RectF walls_in);
+	void ReboundX();
+	void ReboundY();
 	RectF GetReckt();
 	Vec2 pos;
 	Vec2 vel;

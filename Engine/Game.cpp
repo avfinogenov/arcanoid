@@ -28,7 +28,7 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	ball(Vec2(300, 300), Vec2(300, 300)),
-	walls(RectF(0,880,0,600))
+	walls(RectF(0,800,0,600))
 	
 	
 {
@@ -103,7 +103,7 @@ void Game::UpdateModel(float dt)
 	{
 		gfx.PutPixel(20, 400, 255, 255, 255);
 	}
-	
+	ball.CheckCollWalls(walls);
 	ball.Update(dt);
 	
 	
