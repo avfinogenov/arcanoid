@@ -34,7 +34,7 @@ void Ball::Draw(Graphics & gfx)
 	gfx.DrawRect(GetReckt(), c);
 }
 
-bool Ball::CheckCollWalls(RectF walls_in)
+void Ball::CheckCollWalls(RectF walls_in)
 {
 	RectF rect = GetReckt();
 	if (rect.left<=walls_in.left)
@@ -57,8 +57,14 @@ bool Ball::CheckCollWalls(RectF walls_in)
 		pos.y += walls_in.bottom - rect.bottom;
 		ReboundY();
 	}
-	return false;
+	
 }
+
+void Ball::CheckBricks(Brick b)
+{
+	
+}
+
 
 void Ball::ReboundX()
 {

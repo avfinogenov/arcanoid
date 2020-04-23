@@ -81,6 +81,19 @@ void Game::InitMap()
 	
 
 }
+void Game::CheckBricks()
+{
+	float tmpX, tmpY;
+	tmpX = (ball.pos.x - 10) / 20;
+	tmpY = (ball.pos.y - 10) / 20;
+	int nX, nY;
+	nX = ((int)tmpX) / 2;
+	nY = ((int)tmpY);
+	if (nX < 19 && nY < 5)
+	{
+		bricks[nX][nY].isDestroyed = true;
+	}
+}
 //void Function()
 //{
 //	//setbricknumber;
@@ -105,7 +118,7 @@ void Game::UpdateModel(float dt)
 	}
 	ball.CheckCollWalls(walls);
 	ball.Update(dt);
-	
+	CheckBricks();
 	
 }
 
@@ -117,7 +130,10 @@ void Game::ComposeFrame()
 	{
 		for (int j = 0; j < nRow; j++)
 		{
-			bricks[i][j].DrawBrick(gfx);
+			if (!bricks[i][j].isDestroyed)
+			{
+				bricks[i][j].DrawBrick(gfx);
+			}
 		}
 	}
 	ball.Draw(gfx);

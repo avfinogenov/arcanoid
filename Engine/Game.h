@@ -44,6 +44,7 @@ private:
 
 	void InitBriks();
 	void InitMap();
+	void CheckBricks();
 	int MapGetPosX(Vec2 pos);
 	int Game::MapGetPosY(Vec2 pos);
 	
