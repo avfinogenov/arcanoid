@@ -22,3 +22,8 @@ bool RectF::IsCollided(RectF other)
 	b4 = bottom > other.top;
 	return left>other.right && right>other.left && top>other.bottom && bottom>other.top;
 }
+
+RectF RectF::FromCenter(Vec2 & center, float halfWidth, float halfHight)
+{
+	return RectF(center.x-halfWidth, center.x+halfWidth, center.y-halfHight, center.y+halfHight);
+}
