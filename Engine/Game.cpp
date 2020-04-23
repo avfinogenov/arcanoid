@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include ""
 
 
 Game::Game(MainWindow& wnd)
@@ -37,7 +38,14 @@ Game::Game(MainWindow& wnd)
 void Game::Go()
 {
 	gfx.BeginFrame();	
-	UpdateModel();
+	float elapsedTime = ft.Mark();
+	while (elapsedTime > 0.0f)
+	{
+		const float dt = std::min(0.0025f, elapsedTime);
+		UpdateModel(dt);
+		elapsedTime -= dt;
+	}
+	
 	ComposeFrame();
 	
 	gfx.EndFrame();
@@ -85,7 +93,7 @@ int Game::MapGetPosY(Vec2 pos)
 {
 	return (int)((pos.y - 10) / 20);
 }
-void Game::UpdateModel()
+void Game::UpdateModel(float dt)
 {
 	bool *pBoll;
 	pBoll = &(bricks[0][0].isDestroyed);
@@ -95,7 +103,7 @@ void Game::UpdateModel()
 		gfx.PutPixel(20, 400, 255, 255, 255);
 	}
 	
-	float dt= Mark
+	
 	
 	
 }
