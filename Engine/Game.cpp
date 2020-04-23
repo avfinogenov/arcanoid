@@ -103,7 +103,7 @@ void Game::UpdateModel(float dt)
 		gfx.PutPixel(20, 400, 255, 255, 255);
 	}
 	
-	
+	ball.Update(dt);
 	
 	
 }
@@ -119,7 +119,7 @@ void Game::ComposeFrame()
 			bricks[i][j].DrawBrick(gfx);
 		}
 	}
-
+	ball.Draw(gfx);
 	// some things are just too perfect and pure for
 	// this cruel world...
 }

@@ -59,5 +59,6 @@ private:
 	Vec2 sizeOfBrik=Vec2(40, 20);
 	Vec2 offset = Vec2(20, 20);
 	Vec2 map[40][30];
+	FrameTimer ft;
 	Ball ball;
 };
