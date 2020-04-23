@@ -22,10 +22,11 @@
 #include "Game.h"
 
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd )
+	wnd(wnd),
+	gfx(wnd),
+	ball(Vec2(300, 300), Vec2(300, 300))
 	
 	
 {
@@ -94,6 +95,7 @@ void Game::UpdateModel()
 		gfx.PutPixel(20, 400, 255, 255, 255);
 	}
 	
+	float dt= Mark
 	
 	
 }
