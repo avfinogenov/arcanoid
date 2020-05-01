@@ -47,6 +47,7 @@ private:
 	void CheckBricks();
 	int MapGetPosX(Vec2 pos);
 	int Game::MapGetPosY(Vec2 pos);
+	void GetDistance(int i, int j);
 	
 private:
 	MainWindow& wnd;
@@ -63,4 +64,6 @@ private:
 	FrameTimer ft;
 	Ball ball;
 	RectF walls;
+	float distance;
+	int a[2];
 };

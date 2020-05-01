@@ -64,8 +64,9 @@ void Game::InitBriks()
 			posOfBriks.x = (sizeOfBrik.x*float(i)) + offset.x;
 			posOfBriks.y = offset.y + (sizeOfBrik.y*(float)j);
 			bricks[i][j].rect = RectF(posOfBriks, sizeOfBrik);
-			}
+			
 		}
+	}
 }
 void Game::InitMap()
 {
@@ -93,19 +94,35 @@ void Game::CheckBricks()
 	// check around 
 	// вычислить рассто€ние до центра м€ча всех существующих кирпичей
 	// найти кратчайшее рассто€ние и проверить на уничтожение
-	Vec2 result_distance;
+	//Vec2 result_distance=Vec2(0,0);
+	distance=-1;
+	a[0] =  0;
+	a[1] = 0;
+	int tmpi = nX - 1;
+	int tmpj = nY - 1;
 	for (int i = nX - 1; i < nX + 1; i++)
 	{
 		for (int j = nY - 1; j < nY + 1; j++)
 		{
 			
-			result_distance = bricks[i][j].rect.GetCenter() - ball.pos;
+			GetDistance(i, j);
 		}
 	}
-	if (nX < 19 && nY < 5)
+ tmpi = nX - 1;
+ tmpj = nY - 1;
+	if (distance >= 0)
 	{
-		bricks[nX][nY].isDestroyed = true;
+		if (bricks[a[0]][a[1]].rect.IsCollided(ball.GetReckt()))
+		{
+			bricks[a[0]][a[1]].isDestroyed = true;
+			ball.ReboundY();
+		}
 	}
+
+	//  if (nX < 19 && nY < 5)
+	//  {
+	//  	bricks[nX][nY].isDestroyed = true;
+	//  }
 }
 //void Function()
 //{
@@ -119,6 +136,32 @@ int Game::MapGetPosX(Vec2 pos)
 int Game::MapGetPosY(Vec2 pos)
 {
 	return (int)((pos.y - 10) / 20);
+}
+void Game::GetDistance(int i, int j)
+{
+	if (i == 18 && j == 0)
+	{
+		int tmp=0;
+	}
+	if (i<=19 && j<5 && i>=0 && j>=0)
+	{
+		if (!bricks[i][j].isDestroyed)
+		{
+			float tmp = (bricks[i][j].rect.GetCenter() - ball.pos).GetLengthSq();
+			if (distance < 0)
+			{
+				distance = tmp;
+				a[0] = i;
+				a[1] = j;
+			}
+			else if (distance > tmp)
+			{
+				distance = tmp;
+				a[0] = i;
+				a[1] = j;
+			}
+		}
+	}
 }
 void Game::UpdateModel(float dt)
 {
