@@ -27,7 +27,7 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	ball(Vec2(300, 300), Vec2(300, 300)),
+	ball(Vec2(230, 300), Vec2(-300, -300)),
 	walls(RectF(0,800,0,600))
 	
 	
@@ -91,15 +91,13 @@ void Game::CheckBricks()
 	nX = ((int)tmpX) / 2;
 	nY = ((int)tmpY);
 	// nX nY - position of a ball
-	// check around 
+	// 
 	// вычислить рассто€ние до центра м€ча всех существующих кирпичей
 	// найти кратчайшее рассто€ние и проверить на уничтожение
-	//Vec2 result_distance=Vec2(0,0);
+	
 	distance=-1;
 	a[0] =  0;
 	a[1] = 0;
-	int tmpi = nX - 1;
-	int tmpj = nY - 1;
 	for (int i = nX - 1; i < nX + 1; i++)
 	{
 		for (int j = nY - 1; j < nY + 1; j++)
@@ -108,14 +106,30 @@ void Game::CheckBricks()
 			GetDistance(i, j);
 		}
 	}
- tmpi = nX - 1;
- tmpj = nY - 1;
+
 	if (distance >= 0)
 	{
 		if (bricks[a[0]][a[1]].rect.IsCollided(ball.GetReckt()))
 		{
+			
+			if ((ball.pos.x < bricks[a[0]][a[1]].rect.left) || (ball.pos.x > bricks[a[0]][a[1]].rect.right))
+			{
+				if (signbit(ball.pos.x-bricks[a[0]][a[1]].rect.GetCenter().x)==signbit(ball.vel.x))
+				{
+					ball.ReboundY();
+				}
+				else
+				{
+					ball.ReboundX();
+				}
+				
+			}
+			else
+			{
+				ball.ReboundY();
+			}
 			bricks[a[0]][a[1]].isDestroyed = true;
-			ball.ReboundY();
+			
 		}
 	}
 
@@ -163,6 +177,103 @@ void Game::GetDistance(int i, int j)
 		}
 	}
 }
+/*
+bool Game::CheckAnglesofBrick(Brick b, Ball ball)
+{
+	switch (ToTheRight(b.rect, ball.GetReckt()))
+	{
+		case 1:
+		{
+			float tmp1, tmp2;
+			tmp1 = b.rect.left - ball.GetReckt().right;
+			tmp2 = ball.GetReckt().bottom - b.rect.top;
+			if (abs(tmp1) > abs(tmp2))
+			{
+				return true;//side
+			}
+			else 
+			{
+				return false;//vertical
+			}
+			break;
+		}
+		case 2:
+		{
+			float tmp1, tmp2;
+			tmp1 = b.rect.left - ball.GetReckt().right;
+			tmp2 = b.rect.bottom- ball.GetReckt().top;
+			if (abs(tmp1) > abs(tmp2))
+			{
+				return true;//side
+			}
+			else
+			{
+				return false;//vertical
+			}
+			break;
+		}
+		case 3:
+		{
+			float tmp1, tmp2;
+			tmp1 = b.rect.right - ball.GetReckt().left;
+			tmp2 = ball.GetReckt().bottom - b.rect.top;
+			if (abs(tmp1) > abs(tmp2))
+			{
+				return true;//side
+			}
+			else
+			{
+				return false;//vertical
+			}
+			break;
+			
+		}
+		case 4:
+		{
+			float tmp1, tmp2;
+			tmp1 = b.rect.right - ball.GetReckt().left;
+			tmp2 = b.rect.bottom - ball.GetReckt().top;
+			if (abs(tmp1) > abs(tmp2))
+			{
+				return true;//side
+			}
+			else
+			{
+				return false;//vertical
+			}
+			break;
+		}
+	}
+	
+}
+int Game::ToTheRight(RectF r1, RectF r2)
+{
+	if ((r1.GetCenter().x - r2.GetCenter().x)>0)
+	{// слева
+		if ((r1.GetCenter().y - r2.GetCenter().y) > 0)
+		{// сверху слева
+			return 1;
+		}
+		else
+		{// снизу слева
+			return 2;
+		}
+
+	}
+	else
+	{// справа
+		if ((r1.GetCenter().y - r2.GetCenter().y) > 0)
+		{ //сверху справа
+			return 3;
+		}
+		else
+		{// снизу справа
+			return 4;
+		}
+	}
+	
+}
+*/
 void Game::UpdateModel(float dt)
 {
 	//bool *pBoll;

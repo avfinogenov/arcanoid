@@ -48,6 +48,8 @@ private:
 	int MapGetPosX(Vec2 pos);
 	int Game::MapGetPosY(Vec2 pos);
 	void GetDistance(int i, int j);
+	//bool CheckAnglesofBrick(Brick b, Ball ball);
+	//int ToTheRight(RectF r1, RectF r2);
 	
 private:
 	MainWindow& wnd;
