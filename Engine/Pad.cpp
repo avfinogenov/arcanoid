@@ -19,7 +19,7 @@ void Pad::DrawPad(Graphics & gfx)
 	gfx.DrawRect(RectF::FromCenter(pos,50,15), c);
 }
 
-void Pad::Update(float dt, Keyboard kbd)
+void Pad::Update(float dt, Keyboard& kbd)
 {
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
@@ -28,6 +28,20 @@ void Pad::Update(float dt, Keyboard kbd)
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
 		pos = pos + vel*dt;
+	}
+	
+}
+
+void Pad::CheckWalls(RectF walls)
+{	
+	RectF tmp = RectF::FromCenter(pos, 50, 15);
+	if (tmp.left < walls.left)
+	{
+		pos.x = pos.x + walls.left - tmp.left;
+	}
+	if (tmp.right > walls.right)
+	{
+		pos.x = pos.x - tmp.right + walls.right;
 	}
 	
 }

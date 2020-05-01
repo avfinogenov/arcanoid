@@ -10,7 +10,8 @@ public:
 	Pad() = default;
 	Pad(Vec2 pos_in);
 	void DrawPad(Graphics& gfx);
-	void Update(float dt, Keyboard kbd);
+	void Update(float dt, Keyboard& kbd);
+	void CheckWalls(RectF walls);
 	~Pad();
 	Vec2 pos;
 	//RectF rect;

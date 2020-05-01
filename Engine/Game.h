@@ -70,5 +70,5 @@ private:
 	float distance;
 	int a[2];
 	Pad pad;
-	Keyboard kbd;
+	
 };
