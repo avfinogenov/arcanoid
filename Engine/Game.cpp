@@ -130,7 +130,7 @@ void Game::CheckBricks()
 				ball.ReboundY();
 			}
 			bricks[a[0]][a[1]].isDestroyed = true;
-			
+			pad.isCooldown = false;
 		}
 	}
 
@@ -284,10 +284,15 @@ void Game::UpdateModel(float dt)
 	//{
 	//	gfx.PutPixel(20, 400, 255, 255, 255);
 	//}
-	ball.CheckCollWalls(walls);
+	if (ball.CheckCollWalls(walls))
+	{
+		pad.isCooldown = false;
+	}
 	ball.Update(dt);
 	CheckBricks();
-
+	Ball *b;
+	b = &ball;
+	pad.CheckBall(b);
 	pad.Update(dt,wnd.kbd);
 	pad.CheckWalls(walls);
 	

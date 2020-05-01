@@ -5,11 +5,12 @@ class Ball
 {
 public:
 	Ball(Vec2 pos_in, Vec2 vel_in);
+	Ball() = default;
 	~Ball();
 	void ChangeOtherBool(bool *ex);
 	void Update(float dt);
 	void Draw(Graphics& gfx);
-	void CheckCollWalls(RectF walls_in);
+	bool CheckCollWalls(RectF walls_in);
 	void CheckBricks(Brick b);
 	void ReboundX();
 	void ReboundY();

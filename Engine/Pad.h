@@ -12,11 +12,14 @@ public:
 	void DrawPad(Graphics& gfx);
 	void Update(float dt, Keyboard& kbd);
 	void CheckWalls(RectF walls);
+	void CheckBall(Ball *ball);
+	RectF GetRect();
 	~Pad();
 	Vec2 pos;
 	//RectF rect;
 	Color c = Color(255, 0, 0);
 	Vec2 vel;
+	bool isCooldown = false;
 	
 };
 

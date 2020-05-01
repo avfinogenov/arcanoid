@@ -46,6 +46,39 @@ void Pad::CheckWalls(RectF walls)
 	
 }
 
+void Pad::CheckBall(Ball* ball)
+{
+	Ball b;
+	b = *ball;
+	if ( b.GetReckt().IsCollided(GetRect()))
+	{
+		if ((b.pos.x < GetRect().left) || (b.pos.x > GetRect().right))
+		{
+			if (signbit(b.pos.x - GetRect().GetCenter().x) == signbit(b.vel.x))
+			{
+				ball->ReboundY();
+			}
+			else
+			{
+				ball->ReboundX();
+			}
+
+		}
+		else
+		{
+			ball->ReboundY();
+		}
+		isCooldown = true;
+
+
+	}
+}
+
+RectF Pad::GetRect()
+{
+	return RectF::FromCenter(pos,50,15);
+}
+
 Pad::~Pad()
 {
 }
