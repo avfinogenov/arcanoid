@@ -27,3 +27,11 @@ RectF RectF::FromCenter(Vec2 & center, float halfWidth, float halfHight)
 {
 	return RectF(center.x-halfWidth, center.x+halfWidth, center.y-halfHight, center.y+halfHight);
 }
+
+Vec2 RectF::GetCenter(RectF rect_in)
+{
+	// Vec2 v;
+	// v.x = (left + right) / 2;
+	// v.y = (top + bottom) / 2;
+	return Vec2(((left + right) / 2), ((top + bottom) / 2));
+}

@@ -69,15 +69,15 @@ void Game::InitBriks()
 }
 void Game::InitMap()
 {
-	for (int i = 0; i < 40; i++)
-	{
-		for (int j = 0; j < 30; j++)
-		{
-			map[i][j].x = (i*offset.x + (i + 1)*offset.x) / 2;
-			map[i][j].y = (j*offset.y + (j + 1)*offset.y) / 2;
-			
-		}
-	}
+	//          for (int i = 0; i < 40; i++)
+	//          {
+	//          	for (int j = 0; j < 30; j++)
+	//          	{
+	//          		map[i][j].x = (i*offset.x + (i + 1)*offset.x) / 2;
+	//          		map[i][j].y = (j*offset.y + (j + 1)*offset.y) / 2;
+	//          		
+	//          	}
+	//          }
 	
 
 }
@@ -89,6 +89,18 @@ void Game::CheckBricks()
 	int nX, nY;
 	nX = ((int)tmpX) / 2;
 	nY = ((int)tmpY);
+	// nX nY - position of a ball
+	// check around 
+	// вычислить рассто€ние до центра м€ча всех существующих кирпичей
+	// найти кратчайшее рассто€ние и проверить на уничтожение
+	for (int i = nX - 1; i < nX + 1; i++)
+	{
+		for (int j = nY - 1; j < nY + 1; j++)
+		{
+			
+			bricks[i][j].rect.
+		}
+	}
 	if (nX < 19 && nY < 5)
 	{
 		bricks[nX][nY].isDestroyed = true;
@@ -109,13 +121,13 @@ int Game::MapGetPosY(Vec2 pos)
 }
 void Game::UpdateModel(float dt)
 {
-	bool *pBoll;
-	pBoll = &(bricks[0][0].isDestroyed);
-	ball.ChangeOtherBool(pBoll);
-	if (bricks[0][0].isDestroyed)
-	{
-		gfx.PutPixel(20, 400, 255, 255, 255);
-	}
+	//bool *pBoll;
+	//pBoll = &(bricks[0][0].isDestroyed);
+	//ball.ChangeOtherBool(pBoll);
+	//if (bricks[0][0].isDestroyed)
+	//{
+	//	gfx.PutPixel(20, 400, 255, 255, 255);
+	//}
 	ball.CheckCollWalls(walls);
 	ball.Update(dt);
 	CheckBricks();
