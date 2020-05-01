@@ -29,7 +29,8 @@ Game::Game(MainWindow& wnd)
 	gfx(wnd),
 	ball(Vec2(230, 300), Vec2(-300, -300)),
 	walls(RectF(0, 800, 0, 600)),
-	pad(RectF(350, 400, 500, 520), Vec2(300, 0))
+	pad(Vec2(350,500)),
+	kbd()
 	
 	
 {
@@ -287,6 +288,7 @@ void Game::UpdateModel(float dt)
 	ball.CheckCollWalls(walls);
 	ball.Update(dt);
 	CheckBricks();
+	pad.Update(kbd);
 	
 }
 

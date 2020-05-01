@@ -8,12 +8,12 @@ class Pad
 	
 public:
 	Pad() = default;
-	Pad(RectF rect_in, Vec2 vel_in);
+	Pad(Vec2 pos_in);
 	void DrawPad(Graphics& gfx);
 	void Update(float dt, Keyboard kbd);
 	~Pad();
 	Vec2 pos;
-	RectF rect;
+	//RectF rect;
 	Color c = Color(255, 0, 0);
 	Vec2 vel;
 	
