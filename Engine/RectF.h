@@ -11,7 +11,7 @@ public:
 	RectF(Vec2 top_left, Vec2 bot_right);
 	bool IsCollided(RectF other);
 	static RectF FromCenter(Vec2& center, float halfWidth, float halfHight);
-	Vec2 GetCenter(RectF rect_in);
+	Vec2 GetCenter();
 
 
 
