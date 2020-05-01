@@ -93,12 +93,13 @@ void Game::CheckBricks()
 	// check around 
 	// вычислить рассто€ние до центра м€ча всех существующих кирпичей
 	// найти кратчайшее рассто€ние и проверить на уничтожение
+	Vec2 result_distance;
 	for (int i = nX - 1; i < nX + 1; i++)
 	{
 		for (int j = nY - 1; j < nY + 1; j++)
 		{
 			
-			bricks[i][j].rect.GetCenter() - ball.pos
+			result_distance = bricks[i][j].rect.GetCenter() - ball.pos;
 		}
 	}
 	if (nX < 19 && nY < 5)

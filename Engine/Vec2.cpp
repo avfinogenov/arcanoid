@@ -42,3 +42,9 @@ Vec2 & Vec2::operator*=(float rhs)
 Vec2::~Vec2()
 {
 }
+
+float Vec2::GetLengthSq()
+{
+
+	return (x*x)+(y*y);
+}
