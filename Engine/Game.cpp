@@ -98,7 +98,7 @@ void Game::CheckBricks()
 		for (int j = nY - 1; j < nY + 1; j++)
 		{
 			
-			bricks[i][j].rect.GetCenter()
+			bricks[i][j].rect.GetCenter() - ball.pos
 		}
 	}
 	if (nX < 19 && nY < 5)
