@@ -28,12 +28,13 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	ball(Vec2(230, 300), Vec2(-300, -300)),
-	walls(RectF(0,800,0,600))
+	walls(RectF(0, 800, 0, 600)),
+	pad(RectF(350, 400, 500, 520), Vec2(300, 0))
 	
 	
 {
 	InitBriks();
-	InitMap();
+	//InitMap();
 }
 
 void Game::Go()
@@ -304,6 +305,7 @@ void Game::ComposeFrame()
 		}
 	}
 	ball.Draw(gfx);
+	pad.DrawPad(gfx);
 	// some things are just too perfect and pure for
 	// this cruel world...
 }

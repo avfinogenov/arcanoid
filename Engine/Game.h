@@ -27,6 +27,7 @@
 #include "Vec2.h"
 #include "Ball.h"
 #include "FrameTimer.h"
+#include "Pad.h"
 
 class Game
 {
@@ -68,4 +69,5 @@ private:
 	RectF walls;
 	float distance;
 	int a[2];
+	Pad pad;
 };
