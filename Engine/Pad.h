@@ -14,6 +14,7 @@ public:
 	void CheckWalls(RectF walls);
 	void CheckBall(Ball *ball);
 	RectF GetRect();
+	void ResetCooldown();
 	~Pad();
 	Vec2 pos;
 	//RectF rect;

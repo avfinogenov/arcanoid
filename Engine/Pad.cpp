@@ -50,7 +50,7 @@ void Pad::CheckBall(Ball* ball)
 {
 	Ball b;
 	b = *ball;
-	if ( b.GetReckt().IsCollided(GetRect()))
+	if ( b.GetReckt().IsCollided(GetRect())&& !isCooldown)
 	{
 		if ((b.pos.x < GetRect().left) || (b.pos.x > GetRect().right))
 		{
@@ -77,6 +77,11 @@ void Pad::CheckBall(Ball* ball)
 RectF Pad::GetRect()
 {
 	return RectF::FromCenter(pos,50,15);
+}
+
+void Pad::ResetCooldown()
+{
+	isCooldown = false;
 }
 
 Pad::~Pad()
